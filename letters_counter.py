@@ -20,8 +20,6 @@ parser.add_argument('histogram_choice')
 def process_file(infile, histogram_choice):
     """
     """
-    # print('Do you want see the histogram of letter occurrences? Please type y(yes) or n(no):')
-    # histogram_choice = input()
     logger.info(f'Opening input file {infile}...')
     data = open(infile, encoding= 'utf-8').read()
     print(len(data))
