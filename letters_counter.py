@@ -38,7 +38,7 @@ def process_file(infile, histogram_choice):
         plt.show()
     else: None
 
-#if __name__== '__main__':
+if __name__== '__main__':
 args = parser.parse_args()
 process_file(args.infile, args.histogram_choice)
 
