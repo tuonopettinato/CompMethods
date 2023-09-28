@@ -1,8 +1,10 @@
-import numpy as np
 import argparse
+import time
+
+import numpy as np
 from loguru import logger
 import matplotlib.pyplot as plt
-import time
+
 
 start_time = time.time() #Here the clock starts
 
