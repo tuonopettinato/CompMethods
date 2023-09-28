@@ -16,9 +16,6 @@ parser = argparse.ArgumentParser(prog='letter_counter',
 parser.add_argument('infile') #First argument: input file txt
 parser.add_argument('histogram_choice', nargs='?', default='y') #Second argument. Printing the istogram. It is an optional value
 
-
-
-
 def process_file(infile, histogram_choice):
     """
     This function will count the number of letters contained in a .txt file and print their relative frequency. It has been
@@ -39,18 +36,18 @@ def process_file(infile, histogram_choice):
     '''
     We start a for cycle that will search each letter (lowercase and uppercase) in the text. The sum
     of the two cases will be stacked in the
-    histogram empty array. In order to make an histogram with decreasing order
+    histogram array. In order to make an histogram with decreasing order
     of occurrences we have associated the occurrences with
-    their alphabet letter.
+    their alphabet letter through the np.argsort() function.
     '''
 
     for letter,cap_letter in zip(alphabet, cap_alphabet):
         letter_frequency = 100*(data.count(letter) + data.count(cap_letter))/total_characters
         histogram = np.append(histogram, letter_frequency)
         print(cap_letter, ':',  np.round(letter_frequency, 2), '%' )
-    ordering = np.argsort(histogram)[::-1] #It creates an array of indexes that are keeping track of the position changes in order to give the decreasing order
-    histogram = np.sort(histogram)[::-1] #It creates a sorted array in decreasing order
-    label_letters = [alphabet[i] for i in ordering] #Reordering the alphabet letters
+    ordering = np.argsort(histogram)[::-1]  # Creates an array of indexes that are keeping track of the position changes in order to give the decreasing order
+    histogram = np.sort(histogram)[::-1] # Creates a sorted array in decreasing order
+    label_letters = [alphabet[i] for i in ordering] # Reordering the alphabet letters
 
     #If choice for plotting the histogram
 
@@ -67,10 +64,6 @@ def process_file(infile, histogram_choice):
     else:
         logger.error("Invalid value for histogram_choice. Please enter 'n' if you don't want to see the plot ")
 
-
 if __name__== '__main__':
     args = parser.parse_args()
     process_file(args.infile, args.histogram_choice)
-
-
-
