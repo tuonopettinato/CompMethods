@@ -11,7 +11,7 @@ alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q',
 cap_alphabet = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
 
 #We create the parser variable giving the nameprogram and a description of what it does
-parser = argparse.ArgumentParser(prog='wordcount',
+parser = argparse.ArgumentParser(prog='letter_counter',
     description="This program counts the letter occurrences in a given text . There are two valid arguments we can give to the program. First argument is necessary and is the file we want to read; it has to be in the same folder as the program. The second argument is optional and his value will determine if the plot will be shown or not: keep it empty if you want see the plot, insert 'n' if you are not interested in the plot.")
 parser.add_argument('infile') #First argument: input file txt
 parser.add_argument('histogram_choice', nargs='?', default='y') #Second argument. Printing the istogram. It is an optional value
@@ -21,9 +21,14 @@ parser.add_argument('histogram_choice', nargs='?', default='y') #Second argument
 
 def process_file(infile, histogram_choice):
     """
-    This function will count and print the number of letters contained in the infile. It has been
-    implemented the possibility to plot an histogram
-    of letters occurrences.
+    This function will count the number of letters contained in a .txt file and print their relative frequency. It has been
+    implemented the option to plot an histogram.
+    ---------
+    Arguments:
+        infile: str
+            The name of the file to open and analyse
+        histogram_choice: str
+            Type 'y' in order to show the histogram        
     """
     logger.info(f'Opening input file {infile}...')
     data = open(infile, encoding= 'utf-8').read() #Data reading
